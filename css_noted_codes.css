@@ -1,0 +1,288 @@
+/* =====================================================
+   Table of Contents:
+   1. CSS Basics
+   2. CSS Selectors (Element, Class, ID)
+   3. CSS Colors (named, HEX, RGB, HSL)
+   4. CSS Fonts and Text Properties
+   5. CSS Box Model (margin, border, padding, content)
+   6. CSS Backgrounds
+   7. CSS Display and Visibility
+   8. CSS Positioning (static, relative, absolute, fixed, sticky)
+   9. CSS Flexbox
+   10. CSS Grid
+   11. CSS Pseudo-classes (:hover, :active, :nth-child)
+   12. CSS Pseudo-elements (::before, ::after)
+   13. CSS Transitions and Animations
+   14. CSS Media Queries (Responsive Design)
+   15. CSS Variables and Custom Properties
+===================================================== */
+
+/* =====================================================
+   Topic 1: CSS Basics
+   CSS (Cascading Style Sheets) controls the presentation of HTML elements.
+   CSS can be applied in three ways:
+     1. Inline CSS: applied directly in the element via style=""
+        Example: <p style="color:red;">Hello</p>
+     2. Internal CSS: written inside <style> tags in HTML <head>
+        Example:
+        <style>
+          p { color: blue; }
+        </style>
+     3. External CSS: written in a separate .css file linked in HTML
+        Example:
+        <link rel="stylesheet" href="styles.css">
+===================================================== */
+.intro-example {
+  color: blue;      /* Text color */
+  font-size: 16px;  /* Font size */
+  background-color: #f0f0f0; /* Background color */
+}
+
+.inline-example { color: red; }  /* Inline equivalent */
+.internal-example { color: blue; } /* Internal equivalent */
+.external-example { color: green; } /* External equivalent */
+
+/* =====================================================
+   Topic 2: CSS Selectors
+   Selectors target HTML elements to apply styles.
+   Types: element, class, ID, universal, grouping, combinators
+===================================================== */
+p {
+  color: green; /* Element selector */
+}
+.text-highlight {
+  background-color: yellow; /* Class selector */
+}
+#main-title {
+  font-size: 24px; /* ID selector */
+}
+* {
+  box-sizing: border-box; /* Universal selector */
+}
+h1, h2, h3 {
+  font-family: Arial, sans-serif; /* Grouping selector */
+}
+
+/* =====================================================
+   Topic 3: CSS Colors
+   Colors can be specified using names, HEX, RGB, or HSL.
+===================================================== */
+.color-named { color: red; }
+.color-hex { color: #00FF00; }
+.color-rgb { color: rgb(0, 0, 255); }
+.color-hsl { color: hsl(120, 100%, 50%); }
+
+/* =====================================================
+   Topic 4: CSS Fonts and Web Typography
+   Modify font-size, font-weight, text-align, color, decoration, and transformation.
+   Web-safe fonts, custom fonts, and Google Fonts can be used.
+===================================================== */
+/* Web-safe fonts */
+p.web-safe {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Importing custom fonts using @font-face */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/CustomFont-Regular.woff2') format('woff2'),
+       url('fonts/CustomFont-Regular.woff') format('woff'),
+       url('fonts/CustomFont-Regular.ttf') format('truetype');
+}
+p.custom-font {
+  font-family: 'CustomFont', Arial, sans-serif;
+}
+
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+h1.google-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Text styling properties */
+p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF0000;
+  text-align: center;
+  text-transform: uppercase;
+}
+a { text-decoration: underline; }
+
+/* =====================================================
+   Topic 5: CSS Box Model
+   Elements are rendered as boxes: content, padding, border, margin.
+===================================================== */
+.box-example {
+  width: 200px;
+  height: 150px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   Topic 6: CSS Backgrounds
+   Style backgrounds using colors, images, and gradients
+===================================================== */
+/* Background color */
+.bg-color {
+  background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
+}
+
+/* Background image */
+.bg-image {
+  background-image: url('path/to/image.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Linear gradient */
+.bg-linear-gradient {
+  background-image: linear-gradient(to bottom, #ff0000, #0000ff);
+}
+
+/* Radial gradient */
+.bg-radial-gradient {
+  background-image: radial-gradient(circle at center, #ff0000, #0000ff);
+}
+
+/* =====================================================
+   Topic 7: CSS Display and Visibility
+   Control how elements appear: block, inline, inline-block
+   Visibility and display differences.
+===================================================== */
+.block-element { display: block; border: 1px solid black; }
+.inline-element { display: inline; border: 1px solid black; }
+.inline-block-element {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+/* =====================================================
+   Topic 8: CSS Positioning
+   Positions: static, relative, absolute, fixed, sticky
+===================================================== */
+.position-static { position: static; }
+.position-relative { position: relative; top: 10px; left: 10px; }
+.position-absolute { position: absolute; top: 50px; left: 50px; }
+.position-fixed { position: fixed; top: 0; right: 0; }
+.position-sticky { position: sticky; top: 0; }
+
+/* =====================================================
+   Topic 9: CSS Flexbox
+   Flexible one-dimensional layout system
+===================================================== */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-child {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+/* =====================================================
+   Topic 10: CSS Grid
+   Two-dimensional layout system
+===================================================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+.grid-child {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+/* =====================================================
+   Topic 11: CSS Pseudo-classes
+   :hover, :active, :nth-child
+===================================================== */
+.button:hover { background-color: yellow; }
+.link:active { color: red; }
+.list-item:nth-child(odd) { background-color: #f0f0f0; }
+
+/* =====================================================
+   Topic 12: CSS Pseudo-elements
+   ::before, ::after
+===================================================== */
+.element::before { content: '★ '; }
+.element::after { content: ' ★'; }
+
+/* =====================================================
+   Topic 13: CSS Transitions and Animations
+===================================================== */
+.transition-example {
+  transition: background-color 0.3s ease;
+}
+.animation-example {
+  animation: slide 2s infinite alternate;
+}
+@keyframes slide {
+  from { left: 0; }
+  to { left: 100px; }
+}
+
+/* =====================================================
+   Topic 14: CSS Media Queries
+   Responsive design for different screen sizes
+===================================================== */
+@media screen and (max-width: 600px) {
+  body { background-color: lightgray; }
+}
+
+/* =====================================================
+   Topic 15: CSS Variables and Custom Properties
+===================================================== */
+:root {
+  --main-color: #3498db;
+}
+.variable-example {
+  color: var(--main-color);
+}
+
+/* =====================================================
+   Topic 16: CSS Borders (Optional Extra)
+   Borders, border-radius, specific sides, elliptical shapes
+===================================================== */
+.border-solid { border-style: solid; }
+.border-dotted { border-style: dotted; }
+.border-dashed { border-style: dashed; }
+.border-double { border-style: double; }
+.border-width { border-width: 2px; }
+.border-color { border-color: red; }
+.border-sides {
+  border-top: 1px solid red;
+  border-right: 2px dashed blue;
+  border-bottom: 3px dotted green;
+  border-left: 4px double yellow;
+}
+.border-radius { border-radius: 10px; }
+.border-corners {
+  border-radius: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 30px;
+}
+.border-sides-radius {
+  border-radius: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.border-elliptical { border-radius: 30px / 20px; }
+.border-combined {
+  border-style: solid;
+  border-width: 2px;
+  border-color: red;
+  border-radius: 10px;
+}

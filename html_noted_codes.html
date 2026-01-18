@@ -1,262 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Topics 1-15 - Noted Codes</title>
-  <style>
-    body {
-      font-family: 'Courier New', monospace;
-      line-height: 1.5;
-      margin: 20px;
-      max-width: 900px;
-      background-color: #fdfdfd;
-      color: #222;
-    }
-    h1, h2 {
-      color: #1a3d7c;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border-left: 4px solid #3498db;
-      overflow-x: auto;
-    }
-    code {
-      color: #e74c3c;
-    }
-    nav a {
-      margin-right: 12px;
-      text-decoration: none;
-      color: #3498db;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    .note {
-      background-color: #fffbcc;
-      padding: 6px 10px;
-      border-left: 4px solid #f1c40f;
-      margin: 10px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Noted Codes - Topics 1–15</title>
 </head>
 <body>
 
-<h1>HTML Topics 1-15 - Noted Codes</h1>
+<!-- =======================================================
+HTML Noted Codes - Topics 1–15
+
+Table of Contents:
+
+Topic 1  : HTML Basics
+Topic 2  : HTML Tags and Elements
+Topic 3  : HTML Paragraphs
+Topic 4  : HTML Line Breaks
+Topic 5  : HTML Headings
+Topic 6  : HTML Text Formatting
+Topic 7  : HTML Lists
+Topic 8  : HTML Links
+Topic 9  : HTML Navigation
+Topic 10 : HTML Comments
+Topic 11 : HTML Semantics
+Topic 12 : HTML Tables
+Topic 13 : HTML Horizontal Line
+Topic 14 : HTML Forms
+Topic 15 : HTML Div
+============================================================
+-->
+
+<!--
+============================================================
+Topic 1: HTML Basics
+------------------------------------------------------------
+HTML (Hypertext Markup Language) is the foundation of web development.
+It defines the structure of web pages using elements and tags.
+
+Key points:
+1. <!DOCTYPE html> declares HTML version.
+2. <html> is the root element.
+3. <head> contains metadata like <title>.
+4. <body> contains visible content.
+-->
+
+<p>Example paragraph in Topic 1.</p>
+
+<!--
+============================================================
+Topic 2: HTML Tags and Elements
+------------------------------------------------------------
+HTML tags define elements on a page. Tags are enclosed in < >.
+Common tags include:
+
+- Headings: <h1> to <h6>
+- Paragraph: <p>
+- Line break: <br>
+- Image: <img>
+- Link: <a>
+- Lists: <ul>, <ol>, <li>
+- Navigation: <nav>
+-->
+
+<h1>Heading Example</h1>
+<p>This is a paragraph.</p>
+<br>
+<img src="https://via.placeholder.com/150" alt="Example Image">
+<a href="https://www.example.com" target="_blank">Visit Example Website</a>
+
+<!--
+============================================================
+Topic 3: HTML Paragraphs
+------------------------------------------------------------
+Use <p> to create paragraphs. Browsers automatically add vertical spacing.
+-->
+
+<p>This is the first paragraph.</p>
+<p>This is the second paragraph.</p>
+
+<!--
+============================================================
+Topic 4: HTML Line Breaks
+------------------------------------------------------------
+Use <br> to break a line without starting a new paragraph.
+-->
+
+<p>First line.<br>Second line.<br>Third line.</p>
+
+<!--
+============================================================
+Topic 5: HTML Headings
+------------------------------------------------------------
+Use <h1> to <h6> to define headings, showing content hierarchy.
+-->
+
+<h1>Main Heading (h1)</h1>
+<h2>Sub Heading (h2)</h2>
+<h3>Sub Sub Heading (h3)</h3>
+
+<!--
+============================================================
+Topic 6: HTML Text Formatting
+------------------------------------------------------------
+Text formatting tags:
+
+- <b> Bold
+- <i> Italic
+- <u> Underline
+- <s> Strikethrough
+- <sup> Superscript
+- <sub> Subscript
+-->
+
+<p>This is <b>bold</b> text.</p>
+<p>This is <i>italic</i> text.</p>
+<p>This is <u>underlined</u> text.</p>
+<p>This is <s>strikethrough</s> text.</p>
+<p>Water<sub>2</sub>O and 10<sup>2</sup> example.</p>
+
+<!--
+============================================================
+Topic 7: HTML Lists
+------------------------------------------------------------
+Use <ul> for unordered lists (bullets) and <ol> for ordered lists (numbers).
+List items use <li>.
+-->
+
+<ul>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+</ul>
+
+<ol>
+    <li>First step</li>
+    <li>Second step</li>
+    <li>Third step</li>
+</ol>
+
+<!--
+============================================================
+Topic 8: HTML Links
+------------------------------------------------------------
+Use <a> with href to create hyperlinks.
+External links open websites.
+Internal links jump to page sections.
+-->
+
+<a href="https://www.google.com" target="_blank">Google</a>
+
+<h2 id="section1">Section 1</h2>
+<p>Go back to <a href="#top">top</a>.</p>
+
+<!--
+============================================================
+Topic 9: HTML Navigation
+------------------------------------------------------------
+Use <nav> with lists and anchor tags to create menus.
+-->
 
 <nav>
-  <a href="#topic1">Basics</a>
-  <a href="#topic2">Tags</a>
-  <a href="#topic3">Paragraphs</a>
-  <a href="#topic4">Line Breaks</a>
-  <a href="#topic5">Headings</a>
-  <a href="#topic6">Formatting</a>
-  <a href="#topic7">Lists</a>
-  <a href="#topic8">Links</a>
-  <a href="#topic9">Navigation</a>
-  <a href="#topic10">Comments</a>
-  <a href="#topic11">Semantics</a>
-  <a href="#topic12">Tables</a>
-  <a href="#topic13">Horizontal Line</a>
-  <a href="#topic14">Forms</a>
-  <a href="#topic15">Div</a>
+    <ul>
+        <li><a href="#section1">Section 1</a></li>
+        <li><a href="#section2">Section 2</a></li>
+    </ul>
 </nav>
 
-<!-- Topic 1 -->
-<section id="topic1">
-  <h2>1. HTML Basics</h2>
-  <div class="note">Note: Every HTML page starts with &lt;!DOCTYPE html&gt; and has &lt;html&gt;, &lt;head&gt;, &lt;body&gt; tags.</div>
-  <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Page Title&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;Hello World!&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-  </pre>
-</section>
+<h2 id="section2">Section 2</h2>
+<p>Content for section 2.</p>
 
-<!-- Topic 2 -->
-<section id="topic2">
-  <h2>2. HTML Tags & Elements</h2>
-  <div class="note">Note: Tags define elements. Some are block-level (p, div), some inline (a, span).</div>
-  <pre>
-&lt;h1&gt;Heading&lt;/h1&gt;
-&lt;p&gt;Paragraph&lt;/p&gt;
-&lt;a href="https://example.com"&gt;Link&lt;/a&gt;
-&lt;img src="image.jpg" alt="Example"&gt;
-  </pre>
-</section>
+<!--
+============================================================
+Topic 10: HTML Comments
+------------------------------------------------------------
+Use the sample comment format to write notes in HTML.
+-->
 
-<!-- Topic 3 -->
-<section id="topic3">
-  <h2>3. HTML Paragraphs</h2>
-  <div class="note">Use &lt;p&gt; to separate text into paragraphs. Adds vertical spacing automatically.</div>
-  <pre>
-&lt;p&gt;This is the first paragraph.&lt;/p&gt;
-&lt;p&gt;This is the second paragraph.&lt;/p&gt;
-  </pre>
-</section>
+<!-- This is a comment -->
+<p>This paragraph is visible; the comment is not.</p>
 
-<!-- Topic 4 -->
-<section id="topic4">
-  <h2>4. HTML Line Breaks</h2>
-  <div class="note">Use &lt;br&gt; to break lines without starting a new paragraph. Self-closing tag.</div>
-  <pre>
-&lt;p&gt;Line 1&lt;br&gt;Line 2&lt;/p&gt;
-  </pre>
-</section>
+<!--
+============================================================
+Topic 11: HTML Semantics
+------------------------------------------------------------
+Semantic tags add meaning to content:
 
-<!-- Topic 5 -->
-<section id="topic5">
-  <h2>5. HTML Headings</h2>
-  <div class="note">Six levels: &lt;h1&gt; (most important) to &lt;h6&gt; (least important). Use sequentially.</div>
-  <pre>
-&lt;h1&gt;Main Heading&lt;/h1&gt;
-&lt;h2&gt;Subheading&lt;/h2&gt;
-&lt;h3&gt;Section Heading&lt;/h3&gt;
-  </pre>
-</section>
+<header>, <main>, <section>, <article>, <aside>, <footer>
+-->
 
-<!-- Topic 6 -->
-<section id="topic6">
-  <h2>6. HTML Text Formatting</h2>
-  <div class="note">Bold, italic, underline, strikethrough, superscript, subscript tags are used to emphasize text.</div>
-  <pre>
-&lt;p&gt;This is &lt;b&gt;bold&lt;/b&gt; text.&lt;/p&gt;
-&lt;p&gt;This is &lt;i&gt;italic&lt;/i&gt; text.&lt;/p&gt;
-&lt;p&gt;This is &lt;u&gt;underlined&lt;/u&gt; text.&lt;/p&gt;
-&lt;p&gt;This is &lt;s&gt;strikethrough&lt;/s&gt; text.&lt;/p&gt;
-&lt;p&gt;E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
-  </pre>
-</section>
+<header>
+    <h1>Website Header</h1>
+</header>
+<main>
+    <section>
+        <h2>Article Section</h2>
+        <p>This is main content.</p>
+    </section>
+    <aside>
+        <p>Related Info</p>
+    </aside>
+</main>
+<footer>
+    <p>Website Footer</p>
+</footer>
 
-<!-- Topic 7 -->
-<section id="topic7">
-  <h2>7. HTML Lists</h2>
-  <div class="note">Use &lt;ul&gt; for unordered, &lt;ol&gt; for ordered lists. Items inside &lt;li&gt;.</div>
-  <pre>
-&lt;ul&gt;
-  &lt;li&gt;Apple&lt;/li&gt;
-  &lt;li&gt;Banana&lt;/li&gt;
-&lt;/ul&gt;
+<!--
+============================================================
+Topic 12: HTML Tables
+------------------------------------------------------------
+Use <table> with <tr>, <td>, <th>. Attributes: colspan, rowspan.
+-->
 
-&lt;ol&gt;
-  &lt;li&gt;First&lt;/li&gt;
-  &lt;li&gt;Second&lt;/li&gt;
-&lt;/ol&gt;
-  </pre>
-</section>
+<table border="1">
+    <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+    </tr>
+    <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+    </tr>
+    <tr>
+        <td colspan="2">Merged Cell Example</td>
+    </tr>
+</table>
 
-<!-- Topic 8 -->
-<section id="topic8">
-  <h2>8. HTML Links</h2>
-  <div class="note">Anchor tags &lt;a&gt; create links. Use href for URL or #id for internal sections.</div>
-  <pre>
-&lt;a href="https://example.com"&gt;Visit Site&lt;/a&gt;
-&lt;a href="#topic3"&gt;Go to Paragraphs&lt;/a&gt;
-  </pre>
-</section>
+<!--
+============================================================
+Topic 13: HTML Horizontal Line
+------------------------------------------------------------
+Use <hr> to insert a horizontal line.
+-->
 
-<!-- Topic 9 -->
-<section id="topic9">
-  <h2>9. HTML Navigation</h2>
-  <div class="note">Use &lt;nav&gt; with lists and links to build menus.</div>
-  <pre>
-&lt;nav&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#topic1"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#topic5"&gt;Headings&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;
-  </pre>
-</section>
+<p>Above the line</p>
+<hr>
+<p>Below the line</p>
 
-<!-- Topic 10 -->
-<section id="topic10">
-  <h2>10. HTML Comments</h2>
-  <div class="note">Comments do not appear in browser. Useful for notes or temporarily hiding code.</div>
-  <pre>
-&lt;!-- This is a comment --&gt;
-&lt;!-- &lt;p&gt;Hidden paragraph&lt;/p&gt; --&gt;
-  </pre>
-</section>
+<!--
+============================================================
+Topic 14: HTML Forms
+------------------------------------------------------------
+Forms collect user input using <form>, <input>, <textarea>, <select>, <option>, <label>, <button>.
+-->
 
-<!-- Topic 11 -->
-<section id="topic11">
-  <h2>11. HTML Semantics</h2>
-  <div class="note">Semantic tags convey meaning & improve accessibility and SEO.</div>
-  <pre>
-&lt;header&gt;Header&lt;/header&gt;
-&lt;main&gt;Main content&lt;/main&gt;
-&lt;section&gt;Section&lt;/section&gt;
-&lt;article&gt;Article&lt;/article&gt;
-&lt;aside&gt;Sidebar&lt;/aside&gt;
-&lt;footer&gt;Footer&lt;/footer&gt;
-  </pre>
-</section>
+<form action="/submit" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" placeholder="Enter username"><br><br>
 
-<!-- Topic 12 -->
-<section id="topic12">
-  <h2>12. HTML Tables</h2>
-  <div class="note">Use &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;thead&gt;, &lt;tbody&gt; to structure data.</div>
-  <pre>
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Name&lt;/th&gt;
-    &lt;th&gt;Age&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Alice&lt;/td&gt;
-    &lt;td&gt;25&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-  </pre>
-</section>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter email"><br><br>
 
-<!-- Topic 13 -->
-<section id="topic13">
-  <h2>13. HTML Horizontal Line</h2>
-  <div class="note">Use &lt;hr&gt; to visually separate content sections.</div>
-  <pre>
-&lt;p&gt;Above&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Below&lt;/p&gt;
-  </pre>
-</section>
+    <p>Select Gender:</p>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br><br>
 
-<!-- Topic 14 -->
-<section id="topic14">
-  <h2>14. HTML Forms</h2>
-  <div class="note">Forms collect user input using inputs, textarea, select, radio, checkbox, and submit buttons.</div>
-  <pre>
-&lt;form action="/submit" method="post"&gt;
-  &lt;label for="username"&gt;Username:&lt;/label&gt;
-  &lt;input type="text" id="username" name="username"&gt;
-  &lt;input type="submit" value="Send Data"&gt;
-&lt;/form&gt;
-  </pre>
-</section>
+    <p>Select Interests:</p>
+    <input type="checkbox" id="coding" name="interest" value="coding">
+    <label for="coding">Coding</label>
+    <input type="checkbox" id="music" name="interest" value="music">
+    <label for="music">Music</label><br><br>
 
-<!-- Topic 15 -->
-<section id="topic15">
-  <h2>15. HTML Div</h2>
-  <div class="note">&lt;div&gt; is a generic container for grouping elements. No semantic meaning.</div>
-  <pre>
-&lt;div&gt;
-  &lt;h2&gt;Title&lt;/h2&gt;
-  &lt;p&gt;Paragraph&lt;/p&gt;
-&lt;/div&gt;
-  </pre>
-</section>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" placeholder="Enter your message"></textarea><br><br>
+
+    <label for="country">Country:</label>
+    <select id="country" name="country">
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+        <option value="uk">UK</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</form>
+
+<!--
+============================================================
+Topic 15: HTML Div
+------------------------------------------------------------
+Use <div> to group and organize content. It provides a container for multiple elements.
+-->
+
+<div>
+    <h2>Div Container Example</h2>
+    <p>This paragraph is inside a div.</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+    </ul>
+</div>
 
 </body>
 </html>
