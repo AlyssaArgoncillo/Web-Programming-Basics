@@ -15,6 +15,8 @@
    13. CSS Transitions and Animations
    14. CSS Media Queries (Responsive Design)
    15. CSS Variables and Custom Properties
+   16. CSS Borders (Optional Extra)
+   17. Mobile Responsive Design (Mobile-First, Overflow Handling)
 ===================================================== */
 
 /* =====================================================
@@ -106,6 +108,7 @@ p {
   font-weight: bold;
   color: #FF0000;
   text-align: center;
+  letter-spacing: normal;
   text-transform: uppercase;
 }
 a { text-decoration: underline; }
@@ -266,6 +269,7 @@ a { text-decoration: underline; }
   border-bottom: 3px dotted green;
   border-left: 4px double yellow;
 }
+
 .border-radius { border-radius: 10px; }
 .border-corners {
   border-radius: 10px;
@@ -285,4 +289,136 @@ a { text-decoration: underline; }
   border-width: 2px;
   border-color: red;
   border-radius: 10px;
+}
+
+/* =====================================================
+   Topic 17: Mobile Responsive Design
+   Mobile-first approach, viewport configuration, overflow handling,
+   and touch-friendly design patterns.
+===================================================== */
+
+/* Viewport meta tag (goes in HTML <head>) */
+/* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+
+/* Mobile-first approach: Start with mobile styles, then enhance */
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 10px;
+}
+
+/* Base mobile layout */
+.container {
+  width: 100%;
+  max-width: 500px; /* Mobile default */
+  margin: 0 auto;
+}
+
+/* Handling overflow */
+.overflow-hidden { overflow: hidden; }
+.overflow-scroll { overflow: scroll; }
+.overflow-auto { overflow: auto; }
+.overflow-x-auto {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal scroll on mobile */
+.no-horizontal-scroll {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Touch-friendly buttons (minimum 44x44px) */
+.touch-button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 12px 16px;
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Flexible layouts on mobile */
+.flex-mobile {
+  display: flex;
+  flex-direction: column; /* Stack vertically on mobile */
+  gap: 10px;
+}
+
+/* Word break for long text */
+.word-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Tablet styles (medium screens) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding: 20px;
+  }
+  .flex-mobile {
+    flex-direction: row; /* Side-by-side on tablet */
+    justify-content: space-between;
+  }
+  body {
+    font-size: 18px;
+    padding: 20px;
+  }
+}
+
+/* Desktop styles (large screens) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+  .flex-mobile {
+    flex-direction: row;
+    gap: 20px;
+  }
+  body {
+    font-size: 16px;
+    padding: 40px;
+  }
+}
+
+/* Landscape orientation handling */
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    padding: 5px;
+  }
+}
+
+/* Hide on mobile, show on desktop */
+.hide-mobile { display: none; }
+.show-mobile { display: block; }
+
+@media (min-width: 768px) {
+  .hide-mobile { display: block; }
+  .show-mobile { display: none; }
+}
+
+/* Readable line length (ideal: 50-75 characters) */
+.readable-width {
+  max-width: 65ch; /* Characters */
+  margin: 0 auto;
+}
+
+/* Safe area for notched devices */
+.safe-padding {
+  padding: max(20px, env(safe-area-inset-left))
+           max(20px, env(safe-area-inset-right))
+           max(20px, env(safe-area-inset-bottom))
+           max(20px, env(safe-area-inset-top));
 }

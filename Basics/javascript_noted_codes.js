@@ -16,7 +16,11 @@ Table of Contents:
 - Topic 11: JavaScript Regular Expressions (Regex)
 - Topic 12: JavaScript Switch Statements
 - Topic 13: JavaScript Loops
-- Topic 14: JavaScript Objects
+- Topic 14: JavaScript events and Event Handling
+- Topic 15: The return Statement in JavaScript
+- Topic 16: Function Invocation (Calling Functions)
+- Topic 17: Global and Local Scope
+-------------------------------------------------------------   
 */
 
 /*----------------------------------------------------------
@@ -41,7 +45,7 @@ Topic 2: JavaScript Variables
 */
 
 /* Example */
-let name1 = "Alice";
+let name = "Alice";
 let age = 25;
 let isStudent = true;
 const pi = 3.14159;
@@ -64,13 +68,49 @@ Topic 4: JavaScript Arithmetic Operators
 ------------------------------------------------------------
 - +, -, *, /, %, **, ++, --, +=, -=, *=, /=, **=
 - Math functions: Math.floor(), Math.ceil(), Math.round(), Math.random(), Math.max(), Math.min()
+
+--------------------------------
+Basic Math Operators Example
+--------------------------------
 */
 
-/* Example */
 let num1 = 10;
 let num2 = 5;
-console.log(num1 + num2); // 15
-console.log(num1 ** num2); // 100000
+
+console.log(num1 + num2);   // Addition: 15
+console.log(num1 - num2);   // Subtraction: 5
+console.log(num1 * num2);   // Multiplication: 50
+console.log(num1 / num2);   // Division: 2
+console.log(num1 % num2);   // Modulus (remainder): 0
+console.log(num1 ** num2);  // Exponentiation (power): 100000
+
+/*
+--------------------------------
+Math Object Functions
+--------------------------------
+*/
+
+console.log(Math.floor(4.7));   // 4  -> rounds down
+console.log(Math.ceil(4.3));    // 5  -> rounds up
+console.log(Math.round(4.5));   // 5  -> rounds to nearest integer
+console.log(Math.trunc(4.9));   // 4  -> removes decimal part
+
+console.log(Math.max(10, 5, 20)); // 20 -> largest value
+console.log(Math.min(10, 5, 20)); // 5  -> smallest value
+
+console.log(Math.pow(2, 3));     // 8  -> 2 raised to power 3
+console.log(Math.sqrt(25));      // 5  -> square root
+
+console.log(Math.abs(-15));      // 15 -> absolute value
+
+/*
+--------------------------------
+Random Number Example
+--------------------------------
+*/
+
+let randomNum = Math.floor(Math.random() * 10) + 1;
+console.log(randomNum); // Random number from 1 to 10
 
 /*----------------------------------------------------------
 Topic 5: JavaScript Comparison Operators
@@ -497,323 +537,162 @@ for(const key in obj){
 /* Example: forEach() */
 arr.forEach((val, idx) => console.log(`Index ${idx}: ${val}`));
 
-/*----------------------------------------------------------
-Topic 14: JavaScript Objects
-------------------------------------------------------------
-Objects are collections of key-value pairs (properties and methods).
-Objects are fundamental to JavaScript and used to group related data and functions.
+/*
+========================================================
+Topic 14: JavaScript Events and Event Listeners
+========================================================
+
+JavaScript makes web pages interactive using EVENTS.
+An event is an action that happens in the browser such as
+clicking a button, typing on the keyboard, or submitting a form.
+
+An EVENT LISTENER waits for an event to happen and then runs code.
+
+Common Events:
+- click      → when user clicks an element
+- mouseover  → when mouse enters an element
+- mouseout   → when mouse leaves an element
+- keydown    → when a key is pressed
+- keyup      → when a key is released
+- submit     → when a form is submitted
+- load       → when the page finishes loading
+
+Basic Syntax:
+element.addEventListener("event", function);
+
+Example: Click Event
+--------------------------------------------------------
+HTML:
+<button id="btn">Click Me</button>
+
+JavaScript:
+let button = document.getElementById("btn");
+
+button.addEventListener("click", function () {
+    console.log("Button was clicked!");
+});
+
+Using Named Functions:
+--------------------------------------------------------
+function showMessage() {
+    alert("Hello!");
+}
+
+let btn = document.getElementById("btn");
+btn.addEventListener("click", showMessage);
+
+The Event Object:
+--------------------------------------------------------
+document.addEventListener("click", function (event) {
+    console.log(event.type);    // click
+    console.log(event.target);  // element clicked
+});
+
+Preventing Default Behavior:
+--------------------------------------------------------
+let form = document.getElementById("myForm");
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log("Form submission stopped");
+});
 */
 
-/*----------------------------------------------------------
-Creating Objects
-------------------------------------------------------------*/
 
-// Object literal (most common)
-let person = {
-  name: "Alice",
-  age: 25,
-  city: "New York",
-  isStudent: true
-};
-console.log(person);
+/*
+========================================================
+Topic 15: The return Statement in JavaScript
+========================================================
 
-// Accessing properties - dot notation
-console.log(person.name); // "Alice"
-console.log(person.age);  // 25
+The RETURN statement sends a value back from a function
+and stops the function execution.
 
-// Accessing properties - bracket notation
-console.log(person["name"]); // "Alice"
-console.log(person["city"]); // "New York"
+Syntax:
+function name() {
+    return value;
+}
+*/
 
-// Adding new properties
-person.email = "alice@example.com";
-person["phone"] = "123-456-7890";
-
-// Modifying properties
-person.age = 26;
-person.city = "Boston";
-
-// Deleting properties
-delete person.phone;
-
-/*----------------------------------------------------------
-Methods in Objects
-------------------------------------------------------------*/
-// Functions inside objects are called methods
-let calculator = {
-  num1: 10,
-  num2: 5,
-  add: function() {
-    return this.num1 + this.num2;
-  },
-  subtract: function() {
-    return this.num1 - this.num2;
-  },
-  multiply() {  // Shorthand syntax
-    return this.num1 * this.num2;
-  },
-  divide: () => {
-    return this.num1 / this.num2; // Arrow functions don't bind 'this'
-  }
-};
-
-console.log(calculator.add());      // 15
-console.log(calculator.subtract()); // 5
-console.log(calculator.multiply()); // 50
-
-/*----------------------------------------------------------
-'this' Keyword in Objects
-------------------------------------------------------------*/
-let car = {
-  brand: "Toyota",
-  model: "Camry",
-  year: 2023,
-  getInfo: function() {
-    return `${this.brand} ${this.model} (${this.year})`;
-  }
-};
-console.log(car.getInfo()); // "Toyota Camry (2023)"
-
-/*----------------------------------------------------------
-Constructor Functions (Function Constructors)
-------------------------------------------------------------*/
-function User(name, email) {
-  this.name = name;
-  this.email = email;
-  this.isActive = true;
-  this.greet = function() {
-    return `Hello, I'm ${this.name}`;
-  };
+//Example:
+//--------------------------------------------------------
+function add(a, b) {
+    return a + b;
 }
 
-let user1 = new User("Bob", "bob@example.com");
-let user2 = new User("Charlie", "charlie@example.com");
+let result1 = add(5, 3);
+console.log(result1); // 8
 
-console.log(user1.name);    // "Bob"
-console.log(user1.greet()); // "Hello, I'm Bob"
-
-/*----------------------------------------------------------
-Object Methods (Static Methods)
-------------------------------------------------------------*/
-
-// Object.keys() - get all keys
-let student = { name: "David", age: 20, gpa: 3.8 };
-console.log(Object.keys(student)); // ["name", "age", "gpa"]
-
-// Object.values() - get all values
-console.log(Object.values(student)); // ["David", 20, 3.8]
-
-// Object.entries() - get key-value pairs
-console.log(Object.entries(student)); // [["name", "David"], ["age", 20], ["gpa", 3.8]]
-
-// Object.assign() - copy/merge objects
-let obj1 = { a: 1, b: 2 };
-let obj2 = { c: 3, d: 4 };
-let merged = Object.assign({}, obj1, obj2);
-console.log(merged); // { a: 1, b: 2, c: 3, d: 4 }
-
-// Object.create() - create object with specific prototype
-let parent = { greet: function() { return "Hello"; } };
-let child = Object.create(parent);
-child.name = "Eve";
-console.log(child.name);    // "Eve"
-console.log(child.greet()); // "Hello"
-
-// Object.freeze() - prevent modifications
-let frozen = { x: 10 };
-Object.freeze(frozen);
-frozen.x = 20; // Fails silently in non-strict mode
-console.log(frozen.x); // 10 (unchanged)
-
-// Object.seal() - allow property modification, prevent add/delete
-let sealed = { y: 20 };
-Object.seal(sealed);
-sealed.y = 30; // OK
-sealed.z = 40; // Fails silently
-console.log(sealed); // { y: 30 }
-
-/*----------------------------------------------------------
-Destructuring Objects
-------------------------------------------------------------*/
-
-// Basic destructuring
-let book = { title: "JavaScript Guide", author: "John", pages: 500 };
-let { title: book_Title, author: book_Author } = book;
-console.log(bookTitle);  // "JavaScript Guide"
-console.log(bookAuthor); // "John"
-
-// Renaming properties during destructuring
-let { title: bookTitle, author: bookAuthor } = book;
-console.log(bookTitle);  // "JavaScript Guide"
-
-// Default values
-let { title, isbn = "N/A" } = book;
-console.log(isbn); // "N/A"
-
-// Nested destructuring
-let company = {
-  name: "TechCorp",
-  location: { city: "San Francisco", country: "USA" }
-};
-let { name, location: { city } } = company;
-console.log(city); // "San Francisco"
-
-/*----------------------------------------------------------
-Spread Operator with Objects
-------------------------------------------------------------*/
-
-// Spread to copy objects
-let original = { x: 1, y: 2 };
-let copy = { ...original };
-console.log(copy); // { x: 1, y: 2 }
-
-// Spread to merge objects
-let defaults = { theme: "light", lang: "en" };
-let userPrefs = { theme: "dark" };
-let settings = { ...defaults, ...userPrefs };
-console.log(settings); // { theme: "dark", lang: "en" }
-
-// Add new properties with spread
-let user = { name: "Frank", age: 30 };
-let updatedUser = { ...user, email: "frank@example.com" };
-console.log(updatedUser); // { name: "Frank", age: 30, email: "frank@example.com" }
-
-/*----------------------------------------------------------
-ES6 Classes
-------------------------------------------------------------*/
-
-// Class declaration
-class Animal {
-  constructor(name, type) {
-    this.name = name;
-    this.type = type;
-  }
-
-  speak() {
-    return `${this.name} makes a sound`;
-  }
-
-  static info() {
-    return "This is an Animal class";
-  }
+//Without return:
+//--------------------------------------------------------
+function multiply(a, b) {
+    a * b;
 }
 
-let dog = new Animal("Buddy", "Dog");
-console.log(dog.speak()); // "Buddy makes a sound"
-console.log(Animal.info()); // "This is an Animal class"
+console.log(multiply(2, 3)); // undefined
 
-// Class inheritance
-class Dog extends Animal {
-  constructor(name, breed) {
-    super(name, "Dog");
-    this.breed = breed;
-  }
-
-  speak() {
-    return `${this.name} barks`;
-  }
-
-  getBreed() {
-    return `${this.name} is a ${this.breed}`;
-  }
+//Correct version:
+//--------------------------------------------------------
+function multiply(a, b) {
+    return a * b;
 }
 
-let myDog = new Dog("Max", "Golden Retriever");
-console.log(myDog.speak());      // "Max barks"
-console.log(myDog.getBreed());   // "Max is a Golden Retriever"
+console.log(multiply(2, 3)); // 6
 
-/*----------------------------------------------------------
-Prototypes and Prototype Chain
-------------------------------------------------------------*/
 
-// Prototype properties/methods
-function Vehicle(type) {
-  this.type = type;
+/*
+========================================================
+Topic 16: Function Invocation (Calling Functions)
+========================================================
+
+Calling a function means executing it.
+
+Example:
+--------------------------------------------------------
+function greet() {
+    console.log("Hello!");
 }
 
-Vehicle.prototype.getType = function() {
-  return `This is a ${this.type}`;
-};
+greet(); // function call
 
-let car1 = new Vehicle("Car");
-console.log(car1.getType()); // "This is a Car"
-
-// Check if object has property
-console.log(car1.hasOwnProperty("type")); // true
-console.log(car1.hasOwnProperty("getType")); // false (it's inherited)
-
-// Check if property/method exists in prototype chain
-console.log("getType" in car1); // true
-
-// Prototype chain
-function Car(type, brand) {
-  Vehicle.call(this, type); // Call parent constructor
-  this.brand = brand;
+Calling Functions Inside Other Functions:
+--------------------------------------------------------
+function sayHi() {
+    console.log("Hi");
 }
 
-Car.prototype = Object.create(Vehicle.prototype);
-Car.prototype.constructor = Car;
+function startProgram() {
+    sayHi();
+    console.log("Program started");
+}
 
-Car.prototype.getInfo = function() {
-  return `${this.brand} ${this.type}`;
-};
+startProgram();
+*/
 
-let myCar = new Car("Sedan", "Toyota");
-console.log(myCar.getType());  // "This is a Sedan" (inherited from Vehicle)
-console.log(myCar.getInfo());  // "Toyota Sedan"
 
-/*----------------------------------------------------------
-Checking Object Types
-------------------------------------------------------------*/
+/*
+========================================================
+Topic 17: Global and Local Scope
+========================================================
 
-// typeof operator
-console.log(typeof {});           // "object"
-console.log(typeof []);           // "object" (arrays are objects)
-console.log(typeof null);         // "object" (quirk in JS)
+SCOPE determines where variables can be accessed.
 
-// instanceof operator
-console.log(dog instanceof Animal); // true
-console.log(dog instanceof Dog);    // false (dog is Animal, not Dog)
+Global Scope:
+--------------------------------------------------------
+let name = "Aly";
 
-// Object.prototype.toString()
-console.log(Object.prototype.toString.call({}));   // "[object Object]"
-console.log(Object.prototype.toString.call([]));   // "[object Array]"
-console.log(Object.prototype.toString.call(null)); // "[object Null]"
+function showName() {
+    console.log(name);
+}
 
-/*----------------------------------------------------------
-Getters and Setters
-------------------------------------------------------------*/
+showName(); // Aly
 
-let account = {
-  _balance: 1000, // Convention: _ indicates private property
-  
-  get balance() {
-    return this._balance;
-  },
-  
-  set balance(amount) {
-    if (amount > 0) {
-      this._balance = amount;
-    } else {
-      console.log("Invalid amount");
-    }
-  }
-};
+Local Scope:
+--------------------------------------------------------
+function showAge() {
+    let age = 20;
+    console.log(age);
+}
 
-console.log(account.balance); // 1000 (getter)
-account.balance = 2000;        // setter
-console.log(account.balance); // 2000
-
-/*----------------------------------------------------------
-JSON and Objects
-------------------------------------------------------------*/
-
-// Convert object to JSON string
-let person2 = { name: "Grace", age: 28, city: "Chicago" };
-let jsonString = JSON.stringify(person2);
-console.log(jsonString); // '{"name":"Grace","age":28,"city":"Chicago"}'
-
-// Convert JSON string to object
-let jsonData = '{"name":"Henry","age":35}';
-let parsedObj = JSON.parse(jsonData);
-console.log(parsedObj.name); // "Henry"
+showAge();       // 20
+console.log(age); // Error (age is local)
+*/
