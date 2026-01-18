@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Topics 1-15 - Noted Codes</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      line-height: 1.5;
+      margin: 20px;
+      max-width: 900px;
+      background-color: #fdfdfd;
+      color: #222;
+    }
+    h1, h2 {
+      color: #1a3d7c;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-left: 4px solid #3498db;
+      overflow-x: auto;
+    }
+    code {
+      color: #e74c3c;
+    }
+    nav a {
+      margin-right: 12px;
+      text-decoration: none;
+      color: #3498db;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    .note {
+      background-color: #fffbcc;
+      padding: 6px 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>HTML Topics 1-15 - Noted Codes</h1>
+
+<nav>
+  <a href="#topic1">Basics</a>
+  <a href="#topic2">Tags</a>
+  <a href="#topic3">Paragraphs</a>
+  <a href="#topic4">Line Breaks</a>
+  <a href="#topic5">Headings</a>
+  <a href="#topic6">Formatting</a>
+  <a href="#topic7">Lists</a>
+  <a href="#topic8">Links</a>
+  <a href="#topic9">Navigation</a>
+  <a href="#topic10">Comments</a>
+  <a href="#topic11">Semantics</a>
+  <a href="#topic12">Tables</a>
+  <a href="#topic13">Horizontal Line</a>
+  <a href="#topic14">Forms</a>
+  <a href="#topic15">Div</a>
+</nav>
+
+<!-- Topic 1 -->
+<section id="topic1">
+  <h2>1. HTML Basics</h2>
+  <div class="note">Note: Every HTML page starts with &lt;!DOCTYPE html&gt; and has &lt;html&gt;, &lt;head&gt;, &lt;body&gt; tags.</div>
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello World!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</section>
+
+<!-- Topic 2 -->
+<section id="topic2">
+  <h2>2. HTML Tags & Elements</h2>
+  <div class="note">Note: Tags define elements. Some are block-level (p, div), some inline (a, span).</div>
+  <pre>
+&lt;h1&gt;Heading&lt;/h1&gt;
+&lt;p&gt;Paragraph&lt;/p&gt;
+&lt;a href="https://example.com"&gt;Link&lt;/a&gt;
+&lt;img src="image.jpg" alt="Example"&gt;
+  </pre>
+</section>
+
+<!-- Topic 3 -->
+<section id="topic3">
+  <h2>3. HTML Paragraphs</h2>
+  <div class="note">Use &lt;p&gt; to separate text into paragraphs. Adds vertical spacing automatically.</div>
+  <pre>
+&lt;p&gt;This is the first paragraph.&lt;/p&gt;
+&lt;p&gt;This is the second paragraph.&lt;/p&gt;
+  </pre>
+</section>
+
+<!-- Topic 4 -->
+<section id="topic4">
+  <h2>4. HTML Line Breaks</h2>
+  <div class="note">Use &lt;br&gt; to break lines without starting a new paragraph. Self-closing tag.</div>
+  <pre>
+&lt;p&gt;Line 1&lt;br&gt;Line 2&lt;/p&gt;
+  </pre>
+</section>
+
+<!-- Topic 5 -->
+<section id="topic5">
+  <h2>5. HTML Headings</h2>
+  <div class="note">Six levels: &lt;h1&gt; (most important) to &lt;h6&gt; (least important). Use sequentially.</div>
+  <pre>
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Section Heading&lt;/h3&gt;
+  </pre>
+</section>
+
+<!-- Topic 6 -->
+<section id="topic6">
+  <h2>6. HTML Text Formatting</h2>
+  <div class="note">Bold, italic, underline, strikethrough, superscript, subscript tags are used to emphasize text.</div>
+  <pre>
+&lt;p&gt;This is &lt;b&gt;bold&lt;/b&gt; text.&lt;/p&gt;
+&lt;p&gt;This is &lt;i&gt;italic&lt;/i&gt; text.&lt;/p&gt;
+&lt;p&gt;This is &lt;u&gt;underlined&lt;/u&gt; text.&lt;/p&gt;
+&lt;p&gt;This is &lt;s&gt;strikethrough&lt;/s&gt; text.&lt;/p&gt;
+&lt;p&gt;E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+  </pre>
+</section>
+
+<!-- Topic 7 -->
+<section id="topic7">
+  <h2>7. HTML Lists</h2>
+  <div class="note">Use &lt;ul&gt; for unordered, &lt;ol&gt; for ordered lists. Items inside &lt;li&gt;.</div>
+  <pre>
+&lt;ul&gt;
+  &lt;li&gt;Apple&lt;/li&gt;
+  &lt;li&gt;Banana&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+&lt;/ol&gt;
+  </pre>
+</section>
+
+<!-- Topic 8 -->
+<section id="topic8">
+  <h2>8. HTML Links</h2>
+  <div class="note">Anchor tags &lt;a&gt; create links. Use href for URL or #id for internal sections.</div>
+  <pre>
+&lt;a href="https://example.com"&gt;Visit Site&lt;/a&gt;
+&lt;a href="#topic3"&gt;Go to Paragraphs&lt;/a&gt;
+  </pre>
+</section>
+
+<!-- Topic 9 -->
+<section id="topic9">
+  <h2>9. HTML Navigation</h2>
+  <div class="note">Use &lt;nav&gt; with lists and links to build menus.</div>
+  <pre>
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#topic1"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#topic5"&gt;Headings&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+  </pre>
+</section>
+
+<!-- Topic 10 -->
+<section id="topic10">
+  <h2>10. HTML Comments</h2>
+  <div class="note">Comments do not appear in browser. Useful for notes or temporarily hiding code.</div>
+  <pre>
+&lt;!-- This is a comment --&gt;
+&lt;!-- &lt;p&gt;Hidden paragraph&lt;/p&gt; --&gt;
+  </pre>
+</section>
+
+<!-- Topic 11 -->
+<section id="topic11">
+  <h2>11. HTML Semantics</h2>
+  <div class="note">Semantic tags convey meaning & improve accessibility and SEO.</div>
+  <pre>
+&lt;header&gt;Header&lt;/header&gt;
+&lt;main&gt;Main content&lt;/main&gt;
+&lt;section&gt;Section&lt;/section&gt;
+&lt;article&gt;Article&lt;/article&gt;
+&lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;footer&gt;Footer&lt;/footer&gt;
+  </pre>
+</section>
+
+<!-- Topic 12 -->
+<section id="topic12">
+  <h2>12. HTML Tables</h2>
+  <div class="note">Use &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;thead&gt;, &lt;tbody&gt; to structure data.</div>
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alice&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</section>
+
+<!-- Topic 13 -->
+<section id="topic13">
+  <h2>13. HTML Horizontal Line</h2>
+  <div class="note">Use &lt;hr&gt; to visually separate content sections.</div>
+  <pre>
+&lt;p&gt;Above&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Below&lt;/p&gt;
+  </pre>
+</section>
+
+<!-- Topic 14 -->
+<section id="topic14">
+  <h2>14. HTML Forms</h2>
+  <div class="note">Forms collect user input using inputs, textarea, select, radio, checkbox, and submit buttons.</div>
+  <pre>
+&lt;form action="/submit" method="post"&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" id="username" name="username"&gt;
+  &lt;input type="submit" value="Send Data"&gt;
+&lt;/form&gt;
+  </pre>
+</section>
+
+<!-- Topic 15 -->
+<section id="topic15">
+  <h2>15. HTML Div</h2>
+  <div class="note">&lt;div&gt; is a generic container for grouping elements. No semantic meaning.</div>
+  <pre>
+&lt;div&gt;
+  &lt;h2&gt;Title&lt;/h2&gt;
+  &lt;p&gt;Paragraph&lt;/p&gt;
+&lt;/div&gt;
+  </pre>
+</section>
+
+</body>
+</html>
