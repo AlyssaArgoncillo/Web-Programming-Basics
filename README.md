@@ -18,5 +18,6 @@ This resource is perfect for **quick reference**, **revision**, or **self-study*
 ## Repository Structure
 html-noted-codes/
 │
-├─ html_noted_codes.html # Main study guide with all 15 HTML topics
-└─ README.md # This README file
+├─ html_noted_codes.html   # Main study guide with all 15 HTML topics
+└─ README.md              # This README file
+
