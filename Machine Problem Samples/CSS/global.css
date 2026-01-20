@@ -1,0 +1,23 @@
+body {
+    background: #2B2D42;
+    color: #EDF2F4;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cards {max-width: 960px; margin: 48px auto; padding: 0 16px 32px; display: grid; gap: 24px;}
+.card {background: #1c1d2bbc;border-radius: 12px;box-shadow: 0 10px 30px #de915153;padding: 24px;display: grid;gap: 12px;text-align: left;}
+.card h1 {margin: 0;font-size: 1.5rem;color: #edf2f4;text-align: center;}
+.card h3 {margin: 8px 0 4px;font-size: 1rem;color: #8D99AE;}
+.input-row {display: flex;align-items: center;gap: 12px;flex-wrap: wrap;}
+.card input[type="text"] {flex: 1;min-width: 220px;padding: 10px 12px;border: 1px solid #d8dee9;border-radius: 8px;font-size: 1rem;}
+.card input[type="button"] {padding: 10px 16px;background: #d80032;color: #fff;border: none;border-radius: 8px;font-size: 1rem;cursor: pointer;}
+.card input[type="button"]:hover {background: #ad022a;}
+.card input[type="button"]:active {transform: translateY(1px);}
+.card p {margin: 4px 0 0;font-weight: 600;color: #EDF2F4;}
+
+/*
+Author: Alyssa Argoncillo
+Description: This is the css file.
+Date: June 2024
+*/

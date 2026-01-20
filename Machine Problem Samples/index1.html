@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Part 2 Machine Problems</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CSS/global.css">
+    </head>
+    <body>
+        <main class="cards">
+            <div class="card mp1-container">
+                <h1 class="mp1">Machine Problem 1: NormalizeSpace by Alyssa Argoncillo</h1>
+                <h3>Enter a string.</h3>
+                <div class="input-row">
+                    <input type="text" id="string">
+                    <input type="button" value="Replace" onclick="normalizeSpace()">
+                </div>
+                <h3>Result:</h3>
+                <p id="txtResult">No result yet!</p>
+            </div>
+            <div class="card mp2-container">
+                <h1 class="mp2">Machine Problem 2: MaskEmail by Alyssa Argoncillo</h1>
+                <h3>Enter an email.</h3>
+                <div class="input-row">
+                    <input type="text" id="emailString" placeholder="Enter an email here">
+                    <input type="button" value="Mask" onclick="MaskEmail()">
+                </div>
+                <h3>Result:</h3>
+                <p id="emailResult">No result yet!</p>
+            </div>
+            <div class="card mp3-container">
+                <h1 class="mp3">Machine Problem 3: PasswordStrength by Alyssa Argoncillo</h1>
+                <h3>Enter a password.</h3>
+                <div class="input-row">
+                    <input type="text" id="passwordString" placeholder="Enter a password here">
+                    <input type="button" value="Check" onclick="checkPasswordStrength()">
+                </div>
+                <h3>Result:</h3>
+                <p id="passwordResult">No result yet!</p>
+            </div>
+            <div class="card mp4-container">
+                <h1>Machine Problem 4: ReverseEachWord by Alyssa Argoncillo</h1>
+                <h3>Enter a sentence.</h3>
+                <div class="input-row">
+                    <input type="text" id="sentenceString" placeholder="Enter a string here">
+                    <input type="button" value="Reverse" onclick="reverseEachWord()">
+                </div>
+                <h3>Result:</h3>
+                <p id="reversedResult">No result yet!</p>
+        </main>
+        <script src="Moderate/script.js"></script>
+    </body>
+</html>

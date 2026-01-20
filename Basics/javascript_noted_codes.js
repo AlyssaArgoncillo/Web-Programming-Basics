@@ -22,6 +22,7 @@ Table of Contents:
 - Topic 17: Function Invocation (Calling Functions)
 - Topic 18: Global and Local Scope
 - Topic 19: Variable Hoisting in JavaScript
+- Topic 20: REST API Calls and Accessing JSON
 */
 
 /*----------------------------------------------------------
@@ -656,11 +657,11 @@ let { title, isbn = "N/A" } = book;
 console.log(isbn); // "N/A"
 
 // Nested destructuring
-let company = {
+let company1 = {
   name: "TechCorp",
   location: { city: "San Francisco", country: "USA" }
 };
-let { name, location: { city } } = company;
+let { name, location: { city } } = company1;
 console.log(city); // "San Francisco"
 
 /*----------------------------------------------------------
@@ -679,8 +680,8 @@ let settings = { ...defaults, ...userPrefs };
 console.log(settings); // { theme: "dark", lang: "en" }
 
 // Add new properties with spread
-let user = { name: "Frank", age: 30 };
-let updatedUser = { ...user, email: "frank@example.com" };
+let user_info = { name: "Frank", age: 30 };
+let updatedUser = { ...user_info, email: "frank@example.com" };
 console.log(updatedUser); // { name: "Frank", age: 30, email: "frank@example.com" }
 
 /*----------------------------------------------------------
@@ -815,12 +816,12 @@ JSON and Objects
 
 // Convert object to JSON string
 let person2 = { name: "Grace", age: 28, city: "Chicago" };
-let jsonString = JSON.stringify(person2);
-console.log(jsonString); // '{"name":"Grace","age":28,"city":"Chicago"}'
+let json_String = JSON.stringify(person2);
+console.log(json_String); // '{"name":"Grace","age":28,"city":"Chicago"}'
 
 // Convert JSON string to object
-let jsonData = '{"name":"Henry","age":35}';
-let parsedObj = JSON.parse(jsonData);
+let json_Data = '{"name":"Henry","age":35}';
+let parsedObj = JSON.parse(json_Data);
 console.log(parsedObj.name); // "Henry"
 
 /*
@@ -1015,3 +1016,354 @@ function greet() {
     console.log("Hello!");
 }
 */
+
+
+/*
+========================================================
+Topic 20: REST API Calls and Accessing JSON
+========================================================
+
+RESTful APIs allow communication between applications.
+We use HTTP methods (GET, POST, PUT, DELETE) to interact with servers.
+JSON is the standard format for data exchange.
+*/
+
+/*
+========================================================
+Fetch API - Making HTTP Requests
+========================================================
+*/
+
+/*
+GET Request - Retrieve data from server
+*/
+
+// Basic fetch request
+fetch('https://api.example.com/users')
+  .then(response => response.json())  // Parse JSON
+  .then(data => console.log(data))     // Use the data
+  .catch(error => console.error('Error:', error));
+
+// Fetch with error handling
+fetch('https://api.example.com/users')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Data received:', data);
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+
+// Fetch with headers
+fetch('https://api.example.com/users', {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer TOKEN123'
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+/*
+POST Request - Send data to server
+*/
+
+// Basic POST request
+fetch('https://api.example.com/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'John',
+    email: 'john@example.com',
+    age: 30
+  })
+})
+  .then(response => response.json())
+  .then(data => console.log('User created:', data))
+  .catch(error => console.error('Error:', error));
+
+/*
+PUT Request - Update existing data
+*/
+
+fetch('https://api.example.com/users/5', {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'Jane',
+    email: 'jane@example.com',
+    age: 28
+  })
+})
+  .then(response => response.json())
+  .then(data => console.log('User updated:', data))
+  .catch(error => console.error('Error:', error));
+
+/*
+DELETE Request - Remove data from server
+*/
+
+fetch('https://api.example.com/users/5', {
+  method: 'DELETE'
+})
+  .then(response => response.json())
+  .then(data => console.log('User deleted:', data))
+  .catch(error => console.error('Error:', error));
+
+/*
+========================================================
+Async/Await - Modern Approach
+========================================================
+*/
+
+// Async function with await
+async function fetchUserData() {
+  try {
+    const response = await fetch('https://api.example.com/users');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('User data:', data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+fetchUserData();
+
+// Async function with POST
+async function createUser(user) {
+  try {
+    const response = await fetch('https://api.example.com/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    });
+    
+    const data = await response.json();
+    console.log('User created:', data);
+    return data;
+  } catch (error) {
+    console.error('Error creating user:', error);
+  }
+}
+
+createUser({ name: 'Alice', email: 'alice@example.com', age: 25 });
+
+// Multiple async requests
+async function fetchMultipleAPIs() {
+  try {
+    const [usersRes, postsRes, commentsRes] = await Promise.all([
+      fetch('https://api.example.com/users'),
+      fetch('https://api.example.com/posts'),
+      fetch('https://api.example.com/comments')
+    ]);
+    
+    const users = await usersRes.json();
+    const posts = await postsRes.json();
+    const comments = await commentsRes.json();
+    
+    console.log('Users:', users);
+    console.log('Posts:', posts);
+    console.log('Comments:', comments);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+fetchMultipleAPIs();
+
+/*
+========================================================
+Accessing and Working with JSON
+========================================================
+*/
+
+// JSON Object - contains methods for parsing and stringifying
+
+// Sample JSON data
+let jsonString = '{"name": "Bob", "age": 30, "city": "Boston"}';
+
+// Parse JSON string to object
+let user = JSON.parse(jsonString);
+console.log(user.name); // Bob
+console.log(user.age);  // 30
+
+// Stringify object to JSON
+let userObj = { name: 'Charlie', age: 35, email: 'charlie@example.com' };
+let jsonData = JSON.stringify(userObj);
+console.log(jsonData); // {"name":"Charlie","age":35,"email":"charlie@example.com"}
+
+// Stringify with formatting (indentation)
+let prettyJson = JSON.stringify(userObj, null, 2);
+console.log(prettyJson);
+/*
+Output:
+{
+  "name": "Charlie",
+  "age": 35,
+  "email": "charlie@example.com"
+}
+*/
+
+// Parse JSON array
+let jsonArray = '[{"id": 1, "name": "David"}, {"id": 2, "name": "Eve"}]';
+let users = JSON.parse(jsonArray);
+console.log(users[0].name); // David
+console.log(users[1].id);   // 2
+
+// Accessing nested JSON
+let company = {
+  name: "TechCorp",
+  location: {
+    city: "San Francisco",
+    country: "USA"
+  },
+  employees: [
+    { name: "Frank", role: "Developer" },
+    { name: "Grace", role: "Designer" }
+  ]
+};
+
+
+console.log(company.location.city);      // San Francisco
+console.log(company.employees[0].name);  // Frank
+console.log(company.employees[1].role);  // Designer
+
+// Iterating through JSON objects
+let product = { id: 101, name: "Laptop", price: 999.99, inStock: true };
+
+for (let key in product) {
+  console.log(`${key}: ${product[key]}`);
+}
+
+// Using Object methods with JSON
+let apiResponse = { status: 200, message: "Success", data: [1, 2, 3] };
+console.log(Object.keys(apiResponse));      // ["status", "message", "data"]
+console.log(Object.values(apiResponse));    // [200, "Success", [1, 2, 3]]
+console.log(Object.entries(apiResponse));   // [["status", 200], ["message", "Success"], ["data", [1, 2, 3]]]
+
+/*
+========================================================
+Error Handling and Response Status
+========================================================
+*/
+
+async function checkApiStatus() {
+  try {
+    const response = await fetch('https://api.example.com/status');
+    
+    // Check response status codes
+    if (response.status === 200) {
+      console.log('Success');
+      const data = await response.json();
+      return data;
+    } else if (response.status === 404) {
+      console.log('Not found');
+      throw new Error('Resource not found');
+    } else if (response.status === 500) {
+      console.log('Server error');
+      throw new Error('Server error');
+    } else if (response.status === 401) {
+      console.log('Unauthorized');
+      throw new Error('Authentication required');
+    } else {
+      throw new Error(`Unexpected status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+checkApiStatus();
+
+/*
+========================================================
+Common API Patterns
+========================================================
+*/
+
+// Fetching data with query parameters
+const searchUsers = async (query) => {
+  try {
+    const url = new URL('https://api.example.com/users');
+    url.searchParams.append('search', query);
+    url.searchParams.append('limit', 10);
+    
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log('Search results:', data);
+    return data;
+  } catch (error) {
+    console.error('Search error:', error);
+  }
+};
+
+searchUsers('alice');
+
+// Rate limiting and retry logic
+const fetchWithRetry = async (url, maxRetries = 3) => {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        return await response.json();
+      }
+      throw new Error(`HTTP ${response.status}`);
+    } catch (error) {
+      console.log(`Attempt ${i + 1} failed:`, error.message);
+      if (i < maxRetries - 1) {
+        // Wait before retrying (exponential backoff)
+        await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, i)));
+      }
+    }
+  }
+  throw new Error('Max retries exceeded');
+};
+
+fetchWithRetry('https://api.example.com/data');
+
+// Pagination
+const fetchAllPages = async (baseUrl) => {
+  let allData = [];
+  let page = 1;
+  let hasMore = true;
+  
+  while (hasMore) {
+    try {
+      const response = await fetch(`${baseUrl}?page=${page}`);
+      const data = await response.json();
+      
+      if (data.items && data.items.length > 0) {
+        allData = allData.concat(data.items);
+        page++;
+      } else {
+        hasMore = false;
+      }
+    } catch (error) {
+      console.error('Pagination error:', error);
+      hasMore = false;
+    }
+  }
+  
+  return allData;
+};
+
+fetchAllPages('https://api.example.com/items');
+
