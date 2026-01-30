@@ -23,6 +23,7 @@ Table of Contents:
 - Topic 18: Global and Local Scope
 - Topic 19: Variable Hoisting in JavaScript
 - Topic 20: REST API Calls and Accessing JSON
+- Topic 21: JSON Key Translation
 */
 
 /*----------------------------------------------------------
@@ -1366,4 +1367,251 @@ const fetchAllPages = async (baseUrl) => {
 };
 
 fetchAllPages('https://api.example.com/items');
+
+
+/*----------------------------------------------------------
+Topic 21: JSON Key Translation
+------------------------------------------------------------
+- Transforming JSON object keys (e.g., snake_case to camelCase)
+- Renaming keys for consistency
+- Mapping keys from API to application format
+- Using recursion for nested objects and arrays
+- Accessing translated data using bracket notation: data.inventory[1].item
+*/
+
+/* Example 1: Basic Store Inventory with Array Access */
+const storeData = {
+  store_name: "Tech Shop",
+  inventory: [
+    {
+      item_id: 101,
+      item_name: "Laptop",
+      item_price: 999.99,
+      stock_quantity: 15
+    },
+    {
+      item_id: 102,
+      item_name: "Mouse",
+      item_price: 25.99,
+      stock_quantity: 50
+    },
+    {
+      item_id: 103,
+      item_name: "Keyboard",
+      item_price: 79.99,
+      stock_quantity: 30
+    }
+  ]
+};
+
+// Before translation - accessing with snake_case
+console.log(storeData.inventory[1].item_name); // "Mouse"
+console.log(storeData.inventory[0].item_price); // 999.99
+
+
+/* Example 2: Snake Case to Camel Case Conversion */
+function snakeToCamel(str) {
+  return str.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase());
+}
+
+function translateKeys(obj) {
+  if (Array.isArray(obj)) {
+    return obj.map(item => translateKeys(item));
+  } else if (obj !== null && typeof obj === 'object') {
+    return Object.keys(obj).reduce((acc, key) => {
+      const camelKey = snakeToCamel(key);
+      acc[camelKey] = translateKeys(obj[key]);
+      return acc;
+    }, {});
+  }
+  return obj;
+}
+
+// Translate the store data
+const translatedStore = translateKeys(storeData);
+
+// After translation - accessing with camelCase
+console.log(translatedStore.storeName); // "Tech Shop"
+console.log(translatedStore.inventory[1].itemName); // "Mouse"
+console.log(translatedStore.inventory[0].itemPrice); // 999.99
+console.log(translatedStore.inventory[2].stockQuantity); // 30
+
+/* Example 3: Restaurant Menu with Nested Categories */
+const restaurantData = {
+  restaurant_name: "Bistro Cafe",
+  menu_categories: [
+    {
+      category_name: "Appetizers",
+      menu_items: [
+        { dish_name: "Spring Rolls", dish_price: 8.99, is_vegetarian: true },
+        { dish_name: "Chicken Wings", dish_price: 12.99, is_vegetarian: false }
+      ]
+    },
+    {
+      category_name: "Main Course",
+      menu_items: [
+        { dish_name: "Grilled Salmon", dish_price: 24.99, is_vegetarian: false },
+        { dish_name: "Pasta Primavera", dish_price: 18.99, is_vegetarian: true }
+      ]
+    }
+  ]
+};
+
+// Before translation
+console.log(restaurantData.menu_categories[0].menu_items[1].dish_name); // "Chicken Wings"
+
+// Translate keys
+const translatedMenu = translateKeys(restaurantData);
+
+// After translation - clean camelCase access
+console.log(translatedMenu.restaurantName); // "Bistro Cafe"
+console.log(translatedMenu.menuCategories[0].categoryName); // "Appetizers"
+console.log(translatedMenu.menuCategories[0].menuItems[1].dishName); // "Chicken Wings"
+console.log(translatedMenu.menuCategories[1].menuItems[0].dishPrice); // 24.99
+
+
+/* Example 4: Company Data with Departments and Employees */
+const companyData = {
+  company_name: "Tech Corp",
+  total_employees: 150,
+  departments: [
+    {
+      dept_name: "Engineering",
+      dept_head: "Sarah Johnson",
+      employees: [
+        { emp_id: 1001, emp_name: "Alice Smith", job_title: "Senior Developer" },
+        { emp_id: 1002, emp_name: "Bob Chen", job_title: "DevOps Engineer" }
+      ]
+    },
+    {
+      dept_name: "Marketing",
+      dept_head: "Mike Davis",
+      employees: [
+        { emp_id: 2001, emp_name: "Carol White", job_title: "Marketing Manager" },
+        { emp_id: 2002, emp_name: "David Brown", job_title: "Content Writer" }
+      ]
+    }
+  ]
+};
+
+// Translate company data
+const translatedCompany = translateKeys(companyData);
+
+// Accessing nested employee data
+console.log(translatedCompany.departments[0].employees[1].empName); // "Bob Chen"
+console.log(translatedCompany.departments[1].deptName); // "Marketing"
+console.log(translatedCompany.departments[0].employees[0].jobTitle); // "Senior Developer"
+
+// Loop through and display all employees
+translatedCompany.departments.forEach((dept, deptIndex) => {
+  dept.employees.forEach((emp, empIndex) => {
+    console.log(`${dept.deptName} - ${emp.empName}: ${emp.jobTitle}`);
+    // Can also access as: translatedCompany.departments[deptIndex].employees[empIndex].empName
+  });
+});
+
+
+/* Example 5: E-commerce Order System */
+const orderData = {
+  order_id: 54321,
+  customer_name: "Jane Doe",
+  order_date: "2026-01-24",
+  order_items: [
+    {
+      product_id: 201,
+      product_name: "Wireless Headphones",
+      unit_price: 89.99,
+      quantity: 2,
+      item_total: 179.98
+    },
+    {
+      product_id: 202,
+      product_name: "USB-C Cable",
+      unit_price: 15.99,
+      quantity: 3,
+      item_total: 47.97
+    },
+    {
+      product_id: 203,
+      product_name: "Phone Case",
+      unit_price: 24.99,
+      quantity: 1,
+      item_total: 24.99
+    }
+  ],
+  shipping_address: {
+    street_address: "123 Main St",
+    city_name: "Springfield",
+    zip_code: "12345"
+  }
+};
+
+// Translate order data
+const translatedOrder = translateKeys(orderData);
+
+// Accessing order items with array indexing
+console.log(translatedOrder.orderItems[0].productName); // "Wireless Headphones"
+console.log(translatedOrder.orderItems[1].unitPrice); // 15.99
+console.log(translatedOrder.orderItems[2].itemTotal); // 24.99
+
+// Accessing nested shipping address
+console.log(translatedOrder.shippingAddress.streetAddress); // "123 Main St"
+
+// Calculate total using array access
+let orderTotal = 0;
+for (let i = 0; i < translatedOrder.orderItems.length; i++) {
+  orderTotal += translatedOrder.orderItems[i].itemTotal;
+}
+console.log(`Total: $${orderTotal}`); // Total: $252.94
+
+
+/* Example 6: API Response with Pagination and Results Array */
+async function fetchAndTranslateInventory(url) {
+  try {
+    const response = await fetch(url);
+    const apiData = await response.json();
+    
+    // API returns data like: { page_number: 1, total_pages: 5, inventory_items: [...] }
+    const translatedData = translateKeys(apiData);
+    
+    // Now we can access with clean syntax
+    console.log(`Page ${translatedData.pageNumber} of ${translatedData.totalPages}`);
+    
+    // Access items in the inventory array
+    console.log(translatedData.inventoryItems[0].itemName);
+    console.log(translatedData.inventoryItems[3].stockQuantity);
+    
+    return translatedData;
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+}
+
+// Usage: fetchAndTranslateInventory('https://api.example.com/inventory')
+
+
+/* Example 7: Dynamic Key Access After Translation */
+const productCatalog = {
+  catalog_id: 789,
+  product_list: [
+    { sku_code: "LAP-001", product_type: "Electronics", in_stock: true },
+    { sku_code: "SHO-042", product_type: "Footwear", in_stock: false },
+    { sku_code: "BOK-123", product_type: "Books", in_stock: true }
+  ]
+};
+
+const translatedCatalog = translateKeys(productCatalog);
+
+// Using variables to access array elements
+const itemIndex = 1;
+const selectedItem = translatedCatalog.productList[itemIndex];
+console.log(selectedItem.skuCode); // "SHO-042"
+console.log(selectedItem.productType); // "Footwear"
+
+// Conditional access based on index
+if (translatedCatalog.productList[2].inStock) {
+  console.log(`${translatedCatalog.productList[2].skuCode} is available`);
+}
+
 
